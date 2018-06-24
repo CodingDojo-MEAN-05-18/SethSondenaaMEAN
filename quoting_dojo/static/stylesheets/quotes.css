@@ -1,0 +1,11 @@
+#main {
+    border: solid blue 3px;
+    border-radius: 10px;
+    padding: 25px;
+    width: 500px;
+}
+
+.author {
+    color: darkblue;
+    margin-left: 30px;
+}
