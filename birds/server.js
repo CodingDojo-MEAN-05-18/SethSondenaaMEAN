@@ -35,7 +35,6 @@ const birdSchema = new Schema({
     },
     type: {
         type: String,
-        required: true,
         default: 'unknown',
     }
 } , {
@@ -72,11 +71,9 @@ app.post('/birds', function(req, res) {
         });
 });
 
-app.get('birds/:id', function(req, res) {
-    console.log('in id specific route', req.params.id);
+app.get('/birds/:id', function(req, res) {
     Bird.findById(req.params.id)
         .then(bird => {
-            console.log('found bird', bird)
             res.render('bird/show', { bird });
         })
         .catch(error => {
@@ -85,6 +82,55 @@ app.get('birds/:id', function(req, res) {
         });
 });
 
+app.get('/birds/edit/:id', function(req, res) {
+    Bird.findById(req.params.id)
+        .then(bird => {
+            res.render('bird/update', { bird });
+        })
+        .catch(error => {
+            console.log(error.errors.name.message);
+            res.redirect('/');
+        });
+});
+
+app.post('/birds/:id', function(req, res) {
+    Bird.findByIdAndUpdate(req.params.id, req.body)
+        .then(() => {
+            res.redirect('/');
+        })
+        .catch(error => {
+            console.log(error);
+            res.redirect('/');
+        });
+    /*
+    Bird.findById(req.params.id)
+        .then(bird => {
+            bird.update(req.body)
+                .then(() => {
+                    res.redirect('/');
+                })
+                .catch(error => {
+                    console.log(error);
+                    res.redirect('/');
+                });
+        })
+        .catch(error => {
+            console.log(error.errors.name.message);
+            res.redirect('/');
+        });
+    */
+});
+
+app.get('/birds/destroy/:id', function(req, res) {
+    Bird.findByIdAndRemove(req.params.id)
+        .then(() => {
+            res.redirect('/');
+        })
+        .catch(error => {
+            console.log(error);
+            res.redirect('/');
+        });
+});
 
 
 app.listen(port, function(){
