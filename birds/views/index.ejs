@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mongooses Dojo Assignment Index Page</title>
+    <title>Dashbaord Dojo Assignment Index Page</title>
 </head>
 <body>
     <nav>
-        <a href="/mongooses/new">Create Mongoose</a>
+        <a href="/birds/new">Create Bird</a>
     </nav>
     <main>
-        <h1>Here be all thy mongoose</h1>
+        <h1>Here be all thy bird</h1>
         <ul>
-            <% for (const mongoose of mongooses) { %>
-                <li><a href="mongooses/<%= mongoose._id %>"><%= mongoose.name %></a></li>
+            <% for (const bird of birds) { %>
+                <li><a href="birds/<%= bird._id %>"><%= bird.name %></a></li>
             <% } %>
         </ul>
     </main>

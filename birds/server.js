@@ -16,10 +16,10 @@ app.use(bodyParser.json());
 // Setting up database
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-mongoose.connect('mongodb://localhost/mogooses_db');
-mongoose.connection.on('connected', () => console.log('connected to mongo mongooses database'));
+mongoose.connect('mongodb://localhost/bird_datavase');
+mongoose.connection.on('connected', () => console.log('connected to mongo bird database'));
 
-const mongooseSchema = new Schema({
+const birdSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -37,13 +37,13 @@ const mongooseSchema = new Schema({
     timestamps: true,
 });
 
-const Mongoose = mongoose.model('Mongoose', mongooseSchema);
+const Bird = mongoose.model('Bird', birdSchema);
 
 // Routes
 app.get('/', function(req, res) {
-    Mongoose.find({})
-        .then(mongooses => {
-            res.render('index', { mongooses });
+    Bird.find({})
+        .then(birds => {
+            res.render('index', { birds });
         })
         .catch(error => {
             console.log(error.errors.name.message);
@@ -51,13 +51,14 @@ app.get('/', function(req, res) {
         });
 });
 
-app.get('/mongooses/new', function(req, res) {
-    res.render('mongoose/new');
+app.get('/birds/new', function(req, res) {
+    res.render('bird/new');
 });
 
-app.post('/mongooses', function(req, res) {
-    Mongoose.create(req.body)
-        .then(mongoose => {
+app.post('/birds', function(req, res) {
+    Bird.create(req.body)
+        .then(bird => {
+            console.log("created", bird);
             res.redirect('/');
         })
         .catch(error => {
@@ -66,12 +67,12 @@ app.post('/mongooses', function(req, res) {
         });
 });
 
-app.get('mongooses/:id', function(req, res) {
-    console.log('in id specific route');
-    Mongoose.findById(req.params.id)
-        .then(mongoose => {
-            console.log('found mongoose', mongoose)
-            res.render('mongoose/show', { mongoose });
+app.get('birds/:id', function(req, res) {
+    console.log('in id specific route', req.params.id);
+    Bird.findById(req.params.id)
+        .then(bird => {
+            console.log('found bird', bird)
+            res.render('bird/show', { bird });
         })
         .catch(error => {
             console.log(error.errors.name.message);

@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mongooses Dojo Assignment Create a Mongoose Page</title>
+    <title>Dashboard Dojo Assignment Create a Bird Page</title>
 </head>
 <body>
     <nav>
         <a href="/">Home</a>
     </nav>
     <main>
-        <form action="/mongooses" method="post">
+        <form action="/birds" method="post">
             <div>
                 <label>Name: </label>
                 <input type="text" name="name">
@@ -24,7 +24,11 @@
                 <label>Weight: </label>
                 <input type="number" name="weight">
             </div>
-            <button>Create Mongoose!</button>
+            <div>
+                <label>Type: </label>
+                <input type="string" name="type">
+            </div>
+            <button>Create Bird!</button>
         </form>
     </main>
 </body>
