@@ -14,7 +14,7 @@
         <h1>Here be all thy bird</h1>
         <ul>
             <% for (const bird of birds) { %>
-                <li><a href="birds/<%= bird._id %>"><%= bird.name %></a></li>
+                <li><a href="birds/<%= bird._id %>"><%= bird.name %>, <%= bird.type %></a></li>
             <% } %>
         </ul>
     </main>

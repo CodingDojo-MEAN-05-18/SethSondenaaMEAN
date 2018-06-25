@@ -33,6 +33,11 @@ const birdSchema = new Schema({
         type: Number,
         required: true,
     },
+    type: {
+        type: String,
+        required: true,
+        default: 'unknown',
+    }
 } , {
     timestamps: true,
 });
