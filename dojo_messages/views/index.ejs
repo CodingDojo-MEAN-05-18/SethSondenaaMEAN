@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojo Messages Index Page</title>
+</head>
+<body>
+    <main>
+        <h1>Welcome to Dojo Messaging</h1>
+        <div id="post_message">
+            <h2>Post a Message:</h2>
+            <form action="/message" method="post">
+                <div>
+                    <label>Name: </label>
+                    <input  type="text" name="name">
+                </div>
+                <div>
+                    <label>Message: </label>
+                    <input  type="text" name="content">
+                </div>
+                <button>Post my message!</button>
+            </form>
+        </div>
+        <div id="display_messages">
+            <h2>Messages:</h2>
+            <% for (const message of messages) { %>
+                <p>Name: <%= message.name %></p>
+                <p>Message: <%= message.content %></p>
+                <form action="/message/delete/<%= message._id %>" method="post">
+                    <button>Delete Message!</button>
+                </form>
+                <% for (const reply of message.replies) { %>
+                    <p>Name: <%= reply.name %></p>
+                    <p>Comment: <%= reply.content %></p>
+                <% } %>
+                <div class="comments">
+                    <form action="/comment/<%= message._id %>" method="post">
+                        <div>
+                            <label>Name: </label>
+                            <input type="text" name="name">
+                        </div>
+                        <div>
+                            <label>Comment: </label>
+                            <input type="text" name="content">
+                        </div>
+                        <button>Post my comment!</button>
+                    </form>
+                </div>
+            <% } %>
+        </div>
+    </main>   
+</body>
+</html>
