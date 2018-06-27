@@ -11,6 +11,11 @@
         <h1>Welcome to Dojo Messaging</h1>
         <div id="post_message">
             <h2>Post a Message:</h2>
+            <% if(messages.message) { %>
+                <% for (var err of messages.message) { %>
+                 <h3><%= err %></h3>
+                <% } %>
+            <% } %>
             <form action="/message" method="post">
                 <div>
                     <label>Name: </label>
@@ -36,6 +41,11 @@
                     <p>Comment: <%= reply.content %></p>
                 <% } %>
                 <div class="comments">
+                        <% if(messages.comment) { %>
+                            <% for (var err of messages.comment) { %>
+                             <h3><%= err %></h3>
+                            <% } %>
+                        <% } %>
                     <form action="/comment/<%= message._id %>" method="post">
                         <div>
                             <label>Name: </label>

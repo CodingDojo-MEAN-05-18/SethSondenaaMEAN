@@ -10,8 +10,17 @@ app.set('view engine', 'ejs');
 
 
 const bodyParser = require('body-parser');
+const flash = require('express-flash');
+const session = require('express-session');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(flash());
+app.use(session({
+    secret: 'shhthisissecret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {maxAge: 60000},
+}));
 
 // Setting up database
 const mongoose = require('mongoose');
@@ -23,10 +32,12 @@ const messageSchema = new Schema({
     name: {
         type: String,
         required: true,
+        minlength: 1,
     },
     content: {
         type: String,
         required: true,
+        minlength: 1,
     }, replies: [
         {
             type: Schema.Types.ObjectId,
@@ -41,10 +52,12 @@ const replySchema = new Schema({
     name: {
         type: String,
         required: true,
+        minlength: 1,
     },
     content: {
         type: String,
         required: true,
+        minlength: 1,
     }
 } , {
     timestamps: true,
@@ -60,7 +73,9 @@ app.get('/', function(req, res) {
         .then(messages => {
             res.render('index', { messages });
         })
-        .catch(() => console.log('error'));
+        .catch(err => {
+            console.log("we have an error!", err);
+        });
 });
 
 app.post('/message', function(req, res) {
@@ -69,7 +84,14 @@ app.post('/message', function(req, res) {
             console.log('posted', message);
             res.redirect('/');
         })
-        .catch(() => console.log('error'));
+        .catch(err => {
+            console.log("we have an error!");
+            for(let key in err.errors) {
+                req.flash('message', err.errors[key].message);
+                console.log(err.errors[key].message);
+            }
+            res.redirect('/');
+        });
 });
 
 app.post('/message/delete/:id', function(req, res) {
@@ -93,7 +115,14 @@ app.post('/comment/:id', function(req, res) {
                 })
                 .catch(() => console.log('error'));
         })
-        .catch((error => { console.log(error)}));
+        .catch(err => {
+            console.log("we have an error!");
+            for(let key in err.errors) {
+                req.flash('comment', err.errors[key].message);
+                console.log(err.errors[key].message);
+            }
+            res.redirect('/');
+        });
 });
 
 
