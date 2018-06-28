@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quoting Assignment Entry Page</title>
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+    <div id="main">
+        <h1>Welcome to Quoting Dojo</h1>
+        <form action="/quotes" method="post">
+            <div>
+                <label>Your Name:</label>
+                <input type="text" name="name">
+            </div>
+            <div>
+                <label>Your Quote:</label>
+                <textarea rows="10" cols="50" name="content"></textarea>
+            </div>
+            <button>Add my quote!</button>
+        </form>
+        <form action="/quotes" method="get">
+            <button>Skip to quotes!</button>
+        </form>
+    </div>
+</body>
+</html>
