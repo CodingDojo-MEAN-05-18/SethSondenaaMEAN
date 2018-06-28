@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login-Registration Dojo Assignment</title>
+</head>
+<body>
+    <main>
+        <h1>Welcome to the DOJO!</h1>
+        <% if (messages.registration) { %>
+            <% for (let each of messages.registration) { %>
+                <p class="invalid"><%= each %></p>
+            <% } %>
+        <% } %>
+        <h2>Registration</h2>
+        <form action="/register" method="post">
+            <div>
+                <label>First Name: </label>
+                <input type="text" name="first_name">
+            </div>
+            <div>
+                <label>Last Name: </label>
+                <input type="text" name="last_name">
+            </div>
+            <div>
+                <label>Birthday: </label>
+                <input type="date" name="birthday">
+            </div>
+            <div>
+                <label>Email: </label>
+                <input type="text" name="email">
+            </div>
+            <div>
+                <label>Password: </label>
+                <input type="password" name="password">
+            </div>
+            <button>Register!</button>
+        </form>
+        <h2>Login</h2>
+        <% if (messages.login) { %>
+            <% for (let each of messages.login) { %>
+                <p class="invalid"><%= each %></p>
+            <% } %>
+        <% } %>
+        <form action="/login" method="post">
+            <div>
+                <label>Email: </label>
+                <input type="text" name="email">
+            </div>
+            <div>
+                <label>Password: </label>
+                <input type="password" name="password">
+            </div>
+            <button>Login!</button>
+        </form>
+    </main>
+</body>
+</html>

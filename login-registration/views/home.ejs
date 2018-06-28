@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login-Registration Dojo Assignment</title>
+</head>
+<body>
+    <main>
+        <h1>We welcome Ninja <%= user.last_name %> to the DOJO!</h1>
+        <form action="/logout" method="post">
+            <button>Logout!</button>
+        </form>
+        <form action="/destroy/<%= user._id %>" method="post">
+            <button>Delete Me!</button>
+        </form>
+    </main>
+</body>
+</html>
