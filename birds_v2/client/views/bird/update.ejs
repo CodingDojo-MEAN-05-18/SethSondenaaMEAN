@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard Dojo Assignment Create a Bird Page</title>
+</head>
+<body>
+    <nav>
+        <a href="/birds">Home</a>
+        <a href="/birds/<%= bird._id %>">Go Back to <%= bird.name %></a>
+    </nav>
+    <main>
+        <form action="/birds/<%= bird._id %>" method="post">
+            <div>
+                <label>Name: </label>
+                <input type="text" name="name" value="<%= bird.name %>">
+            </div>
+            <div>
+                <label>Age: </label>
+                <input type="number" name="age" value="<%= bird.age %>">
+            </div>
+            <div>
+                <label>Weight: </label>
+                <input type="number" name="weight" value="<%= bird.weight %>">
+            </div>
+            <div>
+                <label>Type: </label>
+                <input type="string" name="type" value="<%= bird.type %>">
+            </div>
+            <button>Save <%= bird.name %>!</button>
+        </form>
+    </main>
+</body>
+</html>

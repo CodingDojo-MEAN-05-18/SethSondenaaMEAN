@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard Dojo Assignment Bird Page</title>
+</head>
+<body>
+    <nav>
+        <a href="/birds">Home</a>
+        <a href="/birds/new">Create Bird</a>
+        <a href="/birds/edit/<%= bird._id %>">Edit <%= bird.name %></a>
+    </nav>
+    <main>
+        <h1>Welcome to <%= bird.name %>'s Page</h1>
+        <p>Age: <%= bird.age %></p>
+        <p>Weight:  <%= bird.weight %> lbs.</p>
+        <p>Type of bird: <%= bird.type %></p>
+        <a href="/birds/destroy/<%= bird._id %>">Delete <%= bird.name %></a>
+    </main>
+</body>
+</html>
