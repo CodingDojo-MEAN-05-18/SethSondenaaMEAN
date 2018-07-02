@@ -1,0 +1,106 @@
+<h1>Registration</h1>
+<div *ngIf='success === "success"'>
+  Thank you for registering with us {{users[users.length-1].first}}.We just sent you a confirmation email at {{users[users.length-1].email}},
+  and we will send all mail to {{users[users.length-1].address}}, {{users[users.length-1].city}}, {{users[users.length-1].state}}.
+  <p>Have a wonderful day!</p>
+</div>
+<fieldset>
+  <legend>Account Information:</legend>
+  <form (submit)='onRegister($event, registerForm)' #registerForm='ngForm'>
+    <div>
+      <label>*First Name: </label>
+      <input type="text" name="first" [(ngModel)]='user.first' required #first='ngModel'>
+      <div class="errors" *ngIf='(first.touched && first.errors)'>
+        <div *ngIf='first.errors.required'>
+          You must enter a first name.
+        </div>
+      </div>
+    </div>
+    <div>
+      <label>*Last Name: </label>
+      <input type="text" name="last" [(ngModel)]='user.last' required #last='ngModel'>
+      <div class="errors" *ngIf='(last.touched && last.errors)'>
+        <div *ngIf='last.errors.required'>
+          You must enter a last name.
+        </div>
+      </div>
+    </div>
+    <div>
+      <label>*Email: </label>
+      <input type="text" name="email" [(ngModel)]='user.email' required #email='ngModel'>
+      <div class="errors" *ngIf='(email.touched && email.errors)'>
+        <div *ngIf='email.errors.required'>
+          You must enter a email.
+        </div>
+      </div>
+    </div>
+    <div>
+      <label>*Password: </label>
+      <input type="password" name="password" [(ngModel)]='user.password' required #password='ngModel' minlength="8">
+      <div class="errors" *ngIf='(password.touched && password.errors)'>
+        <div *ngIf='password.errors.required'>
+          You must enter a password.
+        </div>
+        <div *ngIf='password.errors.minlength'>
+          Password must be at least {{ password.errors.minlength.requiredLength }} characters. Your password provided was {{ password.errors.minlength.actualLength
+          }} characters.
+        </div>
+      </div>
+    </div>
+    <div>
+      <label>*Password Confirmation: </label>
+      <input type="password" name="confirmpw" [(ngModel)]='user.confirmpw' required #confirmpw='ngModel' [pattern]='password.value'>
+      <div class="errors" *ngIf='(confirmpw.touched && confirmpw.errors)'>
+        <div *ngIf='confirmpw.invalid'>
+          Confirm password does not match password provided.
+        </div>
+      </div>
+    </div>
+    <div>
+      <label>*Street Address: </label>
+      <input type="text" name="address" [(ngModel)]='user.address' required #address='ngModel'>
+      <div class="errors" *ngIf='(address.touched && address.errors)'>
+        <div *ngIf='address.errors.required'>
+          You must enter a address.
+        </div>
+      </div>
+    </div>
+    <div>
+      <label>Unit/Apt #: </label>
+      <input type="text" name="unit" [(ngModel)]='user.unit'>
+    </div>
+    <div>
+      <label>*City: </label>
+      <input type="text" name="city" [(ngModel)]='user.city' required #city='ngModel'>
+      <div class="errors" *ngIf='(city.touched && city.errors)'>
+        <div *ngIf='city.errors.required'>
+          You must enter a city.
+        </div>
+      </div>
+    </div>
+    <div>
+      <label>*State: </label>
+      <select name="state" [(ngModel)]='user.state' required #state='ngModel'>
+        <option *ngFor="let state of states">{{state}}</option>
+      </select>
+      <div class="errors" *ngIf='(state.touched && state.errors)'>
+        <div *ngIf='state.errors.required'>
+          You must enter a state.
+        </div>
+      </div>
+    </div>
+    <div>
+      <p>Are you feeling lucky? </p>
+      <input type="radio" name="lucky" value="notLucky" [(ngModel)]='user.lucky' required #lucky='ngModel'>
+      <label>no</label>
+      <input type="radio" name="lucky" value="isLucky" [(ngModel)]='user.lucky' required #lucky='ngModel'>
+      <label>yes</label>
+      <div class="errors" *ngIf='(lucky.touched && lucky.errors)'>
+        <div *ngIf='lucky.errors.required'>
+          You must answer if your feeling lucky.
+        </div>
+      </div>
+    </div>
+    <button [disabled]='registerForm.invalid'>Register</button>
+  </form>
+</fieldset>
