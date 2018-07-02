@@ -1,0 +1,5 @@
+<h1>Switchboard</h1>
+<div *ngFor="let switch of switches, let i = index" class="case">
+  <button [ngClass]="{power: switches[i] !== 'on'}" (click)="flipSwitch(i, switches[i])">{{switch}}</button>
+</div>
+<p id="footer">Made by Seth Sondenaa</p>
