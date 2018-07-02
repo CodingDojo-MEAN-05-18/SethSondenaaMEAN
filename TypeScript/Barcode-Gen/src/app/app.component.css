@@ -1,0 +1,6 @@
+.squares {
+  border: solid 2px black;
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+}
