@@ -1,0 +1,13 @@
+button {
+  margin-left: 15px;
+}
+
+.time {
+  margin-top: 15px;
+  text-align: center;
+  width: 300px;
+}
+
+.selected {
+  background-color: yellow;
+}

@@ -1,0 +1,9 @@
+<h1>US Time Zone Display</h1>
+<div class="zones">
+  <button [ngClass]="{selected: timezonePicked === 'pst'}" (click)="onZoneClick('pst')">PST</button>
+  <button [ngClass]="{selected: timezonePicked === 'mst'}" (click)="onZoneClick('mst')">MST</button>
+  <button [ngClass]="{selected: timezonePicked === 'cst'}" (click)="onZoneClick('cst')">CST</button>
+  <button [ngClass]="{selected: timezonePicked === 'est'}" (click)="onZoneClick('est')">EST</button>
+  <button (click)="onClearClick()">Clear</button>
+</div>
+<div class="time">{{time | date:'hh:mm:ss a, MM/dd/yyyy'}}</div>
