@@ -1,0 +1,13 @@
+fieldset {
+  width: 600px;
+}
+
+img {
+  width: 300px;
+  height: auto;
+  float: right;
+}
+
+#stats {
+  float: left;
+}
