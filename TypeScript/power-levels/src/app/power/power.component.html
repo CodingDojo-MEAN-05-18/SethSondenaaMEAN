@@ -1,0 +1,39 @@
+<fieldset id="powerComp">
+  <legend>PowerComponent</legend>
+  <form (submit)='setPower($event, powerForm)' #powerForm='ngForm'>
+    <label>Intial Power Level: </label>
+    <select name="power" [(ngModel)]='power' required>
+      <option *ngFor="let level of powerOptions">{{ level }}</option>
+    </select>
+    <button [disabled]='powerForm.invalid' id="calcPowers">Calculate Powers</button>
+  </form>
+  <img src="./assets/goku.PNG" alt="goku">
+  <div id="firstPowers">
+    <fieldset class="powerStats">
+      <legend>HumanComponent</legend>
+      <app-human [currPower]="currPower"></app-human>
+    </fieldset>
+    <fieldset class="powerStats">
+      <legend>SaiyanComponent</legend>
+      <app-saiyan [currPower]="currPower"></app-saiyan>
+    </fieldset>
+    <fieldset class="powerStats">
+      <legend>SuperSaiyanComponent</legend>
+      <app-supersaiyan [currPower]="currPower"></app-supersaiyan>
+    </fieldset>
+  </div>
+  <div id="secondPowers">
+    <fieldset class="powerStats">
+      <legend>SuperSaiyanTwoComponent</legend>
+      <app-supersaiyantwo [currPower]="currPower"></app-supersaiyantwo>
+    </fieldset>
+    <fieldset class="powerStats">
+      <legend>SuperSaiyanThreeComponent</legend>
+      <app-supersaiyanthree [currPower]="currPower"></app-supersaiyanthree>
+    </fieldset>
+    <fieldset class="powerStats">
+      <legend>SuperSaiyanFourComponent</legend>
+      <app-supersaiyanfour [currPower]="currPower"></app-supersaiyanfour>
+    </fieldset>
+  </div>
+</fieldset>

@@ -1,0 +1,33 @@
+#powerComp {
+  border: solid 2px black;
+  padding: 10px;
+  width: 825px;
+}
+
+form {
+  font-size: 20px;
+  margin: 10px 0px 0px 25px;
+}
+
+#calcPowers {
+  margin-left: 5px;
+}
+
+img {
+  margin: -40px 0px 0px 700px;
+}
+
+.powerStats {
+  background-color: moccasin;
+  display: inline-block;
+  width: 250px;
+  margin: 20px 0px 0px 10px;
+  border: solid 2px black;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.powerStats legend {
+  background-color: moccasin;
+  border-radius: 3px;
+}
