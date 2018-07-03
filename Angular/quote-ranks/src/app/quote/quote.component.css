@@ -1,0 +1,13 @@
+section {
+  border-bottom: dotted 2px black;
+  padding: 5px 0px 25px 5px;
+  width: 400px;
+}
+
+div {
+  margin: 10px 0px 0px 185px;
+}
+
+button {
+  margin: 10px 0px 0px 300px;
+}

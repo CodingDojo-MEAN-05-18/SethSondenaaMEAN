@@ -1,0 +1,12 @@
+<section>
+  <h1>Add a Quote</h1>
+  <form (submit)='postQuote($event, quoteForm)' #quoteForm='ngForm'>
+    <textarea cols="50" rows="5" name="quote" [(ngModel)]='quote.quote'></textarea>
+    <div>
+      <label>Author </label>
+      <input type="text" name="author" [(ngModel)]='quote.author'>
+    </div>
+    <button>Add Quote</button>
+  </form>
+</section>
+<app-quote-list [quotes]='quotes'></app-quote-list>

@@ -1,0 +1,7 @@
+<section>
+  <div class="quote" *ngFor='let quote of quotes'>
+    <p>"{{ quote.quote }}"</p>
+    <p class="author">- {{ quote.author }}</p>
+    <p>Votes: {{ quote.votes }}</p>
+  </div>
+</section>
