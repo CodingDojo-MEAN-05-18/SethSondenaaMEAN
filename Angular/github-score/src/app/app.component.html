@@ -1,0 +1,17 @@
+<main>
+  <h1>GitHub Score</h1>
+  <section id="input">
+    <form (submit)='onSubmit($event, githubForm)' #githubForm='ngForm'>
+      <div>
+        <label>GitHub Username: </label>
+        <input type="text" name="username" [(ngModel)]='user.username' required #username='ngModel'>
+      </div>
+      <button [disabled]='githubForm.invalid'>Calculate my GitHub Score!</button>
+    </form>
+    <p>{{ buttonStat }}</p>
+    <p>{{ score | json }}</p>
+  </section>
+  <section id="results">
+    <app-score></app-score>
+  </section>
+</main>
