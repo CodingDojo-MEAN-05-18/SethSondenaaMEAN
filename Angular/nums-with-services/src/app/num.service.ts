@@ -4,10 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class NumService {
-  numbersA = [];
-  numbersB = [4, 5, 6];
+  numbersA: Array<number>;
+  numbersB: Array<number>;
 
-  constructor() { }
+  constructor() {   }
 
   randAlpha(): Array<number> {
     this.numbersA = [];
